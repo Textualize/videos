@@ -1,2 +1,3 @@
-# videos
-Code samples for Textual(ize) videos.
+# Videos
+
+[Subscribe to the Textualize YouTube channel](https://www.youtube.com/channel/UCo4nHAZv_cIlAiCSP2IyiOA).
