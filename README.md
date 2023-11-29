@@ -4,6 +4,12 @@
 
 This repo holds the code samples for our YouTube videos.
 
+## Stopwatch series
+
+[Playlist on YouTube](https://www.youtube.com/playlist?list=PLHhDR_Q5Me1MxO4LmfzMNNQyKfwa275Qe).
+
+## Random tip videos
+
 | Video | Folder |
 | :- | :- |
 | [How to install and use the Textual devtools console](https://youtu.be/2w1hJPzQCJY) | n/a |
