@@ -9,7 +9,7 @@ Very similar to the video where we change `TextArea` syntax highlighting languag
 Starting point:
 
 ```py
-# Written with Textual 0.42.0.
+# Written with Textual 0.43.0.
 
 from textual import on
 from textual.app import App, ComposeResult

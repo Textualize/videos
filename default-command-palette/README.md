@@ -6,7 +6,7 @@
 Starting point:
 
 ```py
-# Written with Textual 0.42.0.
+# Written with Textual 0.43.1.
 
 from textual.app import App
 

@@ -1,4 +1,4 @@
-# Written with Textual 0.42.0.
+# Written with Textual 0.43.0.
 
 from textual import on
 from textual.app import App, ComposeResult
@@ -6,18 +6,17 @@ from textual.widgets import Header, Input
 
 
 class TitlesApp(App[None]):
-    BINDINGS = [("t", "change_title")]
-
     TITLE = "App title"
     SUB_TITLE = "App subtitle"
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield Input(placeholder="Title", id="title")
-        yield Input(placeholder="Subtitle", id="sub_title")
+        yield Input(placeholder="title", id="title")
+        yield Input(placeholder="subtitle", id="sub_title")
 
     @on(Input.Changed)
-    def update_header(self, event: Input.Changed):
+    def update_title(self, event: Input.Changed) -> None:
+        # self.sub_title = event.value
         setattr(self, event.input.id, event.value)
 
 
