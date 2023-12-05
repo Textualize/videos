@@ -6,12 +6,16 @@ from textual.validation import Function, Length, Regex
 from textual.widgets import Input, RichLog
 
 
+def is_multiple_of_9(number):
+    return int(number) % 9 == 0
+
+
 class ValidatedInputApp(App[None]):
     def compose(self) -> ComposeResult:
         yield Input(
             validators=[
                 Function(
-                    lambda x: int(x) % 9 == 0,
+                    is_multiple_of_9,
                     failure_description="Not a multiple of 9...",
                 ),
                 Length(minimum=10, maximum=15),
