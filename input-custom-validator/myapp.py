@@ -11,7 +11,7 @@ class LongBinary(Validator):
         if len(value) < 10:
             return self.failure("Too short...")
 
-        if set(value) - set("01"):
+        if set(value) - {"0", "1"}:
             return self.failure("Can only use digits 0 and 1.")
 
         return self.success()
