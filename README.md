@@ -21,3 +21,12 @@ This repo holds the code samples for our YouTube videos.
 | [How to do automatic UI sync / updates with timers and set_interval in Textual](https://youtu.be/ewqr50D5F68) | `set_interval-automatic-ui-updates` |
 | [How to set and change the theme for syntax highlighting in the TextArea widget in Textual](https://youtu.be/DE6RjlReDTg) | `switch-text-area-theme` |
 | [How to add custom commands to the Command Palette in Textual](https://youtu.be/Sh2uz-TmsiQ) | `custom-command-palette` |
+| [Basic input restrictions in Textual](https://youtu.be/HlTK85KnlqY) | `basic-input-restrictions` |
+| [Basic auto-completion suggestions in Textual](https://youtu.be/a6BcbBNRSIQ) | `basic-suggestions` |
+| [Showcase of all built-in validators in Textual](https://youtu.be/o-rTaq2zvMc) | `showcase-built-in-validators` |
+| [How to use the logging widgets RichLog and Log in Textual](https://youtu.be/YALhM7UUX8Y) | `logging-with-log-and-richlog` |
+| [Basic screen management in Textual: pushing, popping, and switching screens](https://youtu.be/LJpR6u1ww7Q) | `screen-management-push-pop-switch` |
+| [Demo of the input validation capabilities of Textual](https://youtu.be/BqkdWFwNJmY) | `input-validation-demo` |
+| [How to create dynamic suggestions for input auto-completion in Textual](https://youtu.be/KRSwO0_l1DI) | `input-with-custom-suggestions` |
+| [How to log messages to the devtools console in Textual](https://youtu.be/b2HRbz3dgxM) | `logging-with-textual-log` |
+| [How to implement custom input validation in Textual](https://youtu.be/3EtArlSSOd0) | `input-custom-validator` |
