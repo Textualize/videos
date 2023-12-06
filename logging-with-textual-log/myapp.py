@@ -1,4 +1,4 @@
-# Written with Textual 0.43.2
+# Written with Textual 0.44.1
 
 from textual import log
 from textual.app import App

@@ -12,7 +12,6 @@ Start with:
 
 from textual import on
 from textual.app import App, ComposeResult
-from textual.validation import Function, Length, Regex
 from textual.widgets import Input, RichLog
 
 
@@ -21,7 +20,6 @@ class ValidatedInputApp(App[None]):
         yield Input(
             validators=[],
             validate_on=["submitted"],
-            valid_empty=True,
         )
         yield RichLog()
 

@@ -22,7 +22,6 @@ class ValidatedInputApp(App[None]):
         yield Input(
             validators=[LongBinary()],
             validate_on=["submitted"],
-            valid_empty=True,
         )
         yield RichLog()
 
