@@ -17,7 +17,11 @@ class DisappearingButton(App[None]):
 
     @on(Button.Pressed)
     def make_button_disappear(self, event: Button.Pressed) -> None:
-        event.control.styles.animate("opacity", 0, duration=3)
+        event.button.styles.animate(
+            "opacity",
+            0,
+            duration=3,
+        )
 
 
 app = DisappearingButton()

@@ -2,6 +2,8 @@
 Show how to create a basic countdown timer with `Digits`, `set_interval`, and reactives.
 """
 
+# Written with Textual 0.44.1.
+
 from textual.app import App, ComposeResult
 from textual.containers import Center, Middle
 from textual.reactive import reactive
@@ -9,7 +11,12 @@ from textual.widgets import Digits
 
 
 class CountdownApp(App[None]):
-    CSS = """Digits { width: auto; }"""
+    CSS = """
+    Digits {
+        width: auto;
+    }
+    """
+
     time_left = reactive(15, init=False)
 
     def compose(self) -> ComposeResult:
@@ -31,5 +38,6 @@ class CountdownApp(App[None]):
         self.tick_timer = self.set_interval(1, self.tick)
 
 
+app = CountdownApp()
 if __name__ == "__main__":
-    CountdownApp().run()
+    app.run()

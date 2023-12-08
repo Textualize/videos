@@ -11,11 +11,13 @@ from textual.widgets import Button
 class DisappearingButton(App[None]):
     CSS = """
     Button {
-        transition: background 1000ms in_out_cubic;
+        transition: background 1s;
+        transition: opacity 3s;
     }
 
-    .red {
+    .changed {
         background: red;
+        opacity: 0;
     }
     """
 
@@ -27,7 +29,7 @@ class DisappearingButton(App[None]):
 
     @on(Button.Pressed)
     def make_button_disappear(self, event: Button.Pressed) -> None:
-        event.control.add_class("red")
+        event.control.add_class("changed")
 
 
 app = DisappearingButton()
