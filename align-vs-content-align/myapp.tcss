@@ -1,0 +1,13 @@
+#outer {
+    width: 30;
+    height: 5;
+    content-align-horizontal: right;
+    align-vertical: bottom;
+    background: red;
+}
+
+#inner {
+    background: blue;
+    height: 3;
+    content-align: center middle;
+}
