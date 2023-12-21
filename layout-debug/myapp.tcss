@@ -1,0 +1,33 @@
+Grid {
+    grid-size: 3 3;
+    grid-gutter: 1;
+}
+
+YesOrNo {
+    align: center middle;
+}
+
+YesOrNo > Container {
+    width: auto;
+    height: auto;
+    background: blue;
+    align: center middle;
+    padding: 1 2;
+}
+
+YesOrNo > Container > Label {
+    width: 100%;
+    content-align-horizontal: center;
+    background: pink;
+}
+
+YesOrNo > Container > Horizontal {
+    height: auto;
+    width: auto;
+    background: red;
+}
+
+
+YesOrNo > Container > Horizontal > Button {
+    margin: 1 2;
+}

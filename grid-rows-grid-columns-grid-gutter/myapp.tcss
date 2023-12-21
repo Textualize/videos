@@ -1,0 +1,5 @@
+Grid {
+    grid-size: 3 3;
+    grid-columns: 1fr 2fr;
+    grid-gutter: 1;
+}
