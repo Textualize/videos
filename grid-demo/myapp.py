@@ -3,7 +3,7 @@ from textual.containers import Grid
 from textual.widgets import Placeholder
 
 
-class ModalScreenApp(App):
+class GridApp(App):
     CSS_PATH = "myapp.tcss"
 
     def compose(self):
@@ -15,4 +15,4 @@ class ModalScreenApp(App):
 
 
 if __name__ == "__main__":
-    ModalScreenApp().run()
+    GridApp().run()
