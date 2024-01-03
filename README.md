@@ -30,3 +30,19 @@ This repo holds the code samples for our YouTube videos.
 | [How to create dynamic suggestions for input auto-completion in Textual](https://youtu.be/KRSwO0_l1DI) | `input-with-custom-suggestions` |
 | [How to log messages to the devtools console in Textual](https://youtu.be/b2HRbz3dgxM) | `logging-with-textual-log` |
 | [How to implement custom input validation in Textual](https://youtu.be/3EtArlSSOd0) | `input-custom-validator` |
+| [How to change/disable app auto-focus in Textual](https://youtu.be/dW-Khc8d2iA) | `change-app-auto-focus` |
+| [TCSS queries tutorial for Textual](https://youtu.be/t-JDZOurLhw) | - |
+| [How to create a countdown timer in Textual](https://youtu.be/1Sb4j4LTFuo) | `countdown-timer` |
+| [How to animate style changes programmatically in Textual](https://youtu.be/z49OV0sm_JU) | `animate-styles-method` |
+| [How to use the transition TCSS style in Textual](https://youtu.be/PUuXV-gvtXM) | `transition-tcss-style` |
+| [How to create a toggleable sidebar in Textual](https://youtu.be/0R9fLPrhH5U) | `toggleable-sidebar` |
+| [Differences between the styles align and content-align in Textual](https://youtu.be/GFj6UNLTyrs) | `align-vs-content-align` |
+| [How to add a loading indicator to a widget in Textual](https://youtu.be/OBpNPS73qoE) | `loading-widget-indicator` |
+| [How to create an accordion of collapsible widgets in Textual](https://youtu.be/_eRV_Xt1zhU) | `collapsible-accordion` |
+| [How to create and style a transparent modal screen in Textual](https://youtu.be/GvE36QfKpLc) | `modal-styling` |
+| [How to use callbacks with modal screens in Textual](https://youtu.be/0akjBk8lve8) | `modal-callback` |
+| [How to pass data to modal screens in Textual](https://youtu.be/FingLy_IHXA) | `modal-data` |
+| [How to debug a layout with TCSS in Textual](https://youtu.be/VXwqkYDCZbo) | `layout-debug` |
+| [Demo of the grid layout in Textual](https://youtu.be/zxWwkXjn-UI) | `grid-demo` |
+| [Advanced grid styling in Textual](https://youtu.be/p6aAiKfAmCI) | `grid-rows-grid-columns-grid-gutter` |
+| [Demo of the keyline style for grids in Textual](https://youtu.be/9BY-4oggpZ0) | `keyline-demo` |
