@@ -1,0 +1,4 @@
+- Start with the intent of updating a greeting while typing
+- Create the widget with its method `render`
+- Show that updating the attribute `who` requires a call to refresh
+- Replace regular attribute with a reactive
