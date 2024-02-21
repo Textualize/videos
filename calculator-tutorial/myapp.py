@@ -6,23 +6,23 @@ import operator
 from textual import on
 from textual.app import App, ComposeResult
 from textual.containers import Grid
-from textual.reactive import var
+from textual.reactive import reactive
 from textual.widgets import Button, Digits
 
 
 class CalculatorApp(App[None]):
     CSS_PATH = "myapp.tcss"
 
-    num_displayed = var("0")
-    value = var("0")
-    result = var(0)
-    right = var(0)
-    show_ac = var(True)
+    result = reactive(0)
+    last_typed = reactive(0)
+    number_displayed = reactive("0")
+    value = reactive("")
+    show_ac = reactive(True)
     operator = operator.add
 
     def compose(self) -> ComposeResult:
         yield Digits(id="display")
-        with Grid(id="buttons"):
+        with Grid():
             yield Button("AC", id="ac", classes="top")
             yield Button("C", id="c", classes="top")
             yield Button("+/-", id="negate", classes="top")
@@ -44,68 +44,69 @@ class CalculatorApp(App[None]):
             yield Button(",", id="point")
             yield Button.warning("=", id="equals")
 
+    def compute_show_ac(self) -> None:
+        return self.value in ("", "0")
+
+    def watch_show_ac(self, show_ac: bool) -> None:
+        self.query_one("#ac").display = show_ac
+        self.query_one("#c").display = not show_ac
+
     @on(Button.Pressed, ".number")
     def update_number_displayed(self, event: Button.Pressed) -> None:
-        _, _, num = event.button.id.partition("-")
-        self.num_displayed = self.value = self.value.lstrip("0") + num
+        button_id = event.button.id
+        _, _, digit = button_id.partition("-")
+        if digit == self.value == "0":
+            return
+        self.number_displayed = self.value = self.value + digit
+
+    def watch_number_displayed(self, new_value: str) -> None:
+        self.query_one(Digits).update(new_value)
 
     def _do_math(self) -> None:
-        self.result = self.operator(self.result, self.right)
+        self.result = self.operator(self.result, self.last_typed)
+        self.number_displayed = str(self.result).rstrip("0.-") or "0"
         self.value = ""
-        self.num_displayed = str(self.result)
 
     @on(Button.Pressed, ".operator")
-    def operator_pressed(self, event: Button.Pressed) -> None:
-        self.right = Decimal(self.value or "0")
+    def handle_operator_button(self, event: Button.Pressed) -> None:
+        self.last_typed = Decimal(self.value or "0")
         self._do_math()
-        self.operator = getattr(operator, event.button.id)
+        op_name = event.button.id
+        self.operator = getattr(operator, op_name)
 
     @on(Button.Pressed, "#equals")
-    def equals_pressed(self) -> None:
+    def handle_equals_press(self) -> None:
         if self.value:
-            self.right = Decimal(self.value)
+            self.last_typed = Decimal(self.value)
         self._do_math()
 
     @on(Button.Pressed, "#point")
-    def add_decimal_place(self) -> None:
+    def add_decimal_point(self) -> None:
         if "." in self.value:
             self.bell()
             return
-        self.value = self.num_displayed = (self.value or "0") + "."
 
-    @on(Button.Pressed, "#negate")
-    def negate_number(self) -> None:
-        if self.value.startswith("-"):
-            self.value = self.num_displayed = self.value[1:]
-        else:
-            self.value = self.num_displayed = "-" + self.value
+        self.number_displayed = self.value = (self.value or "0") + "."
 
     @on(Button.Pressed, "#percent")
-    def percent_pressed(self) -> None:
-        self.value = self.num_displayed = str(Decimal(self.value or "0") / 100)
+    def divide_by_hundred(self) -> None:
+        self.number_displayed = self.value = str(Decimal(self.value or "0") / 100)
 
-    def watch_num_displayed(self, displayed: str) -> None:
-        self.query_one(Digits).update(displayed)
+    @on(Button.Pressed, "#negate")
+    def negate(self) -> None:
+        if self.value:
+            self.number_displayed = self.value = str(-1 * Decimal(self.value or "0"))
 
     @on(Button.Pressed, "#c")
-    def clear_displayed(self) -> None:
+    def clear_typed(self) -> None:
         self.value = ""
-        self.num_displayed = "0"
+        self.number_displayed = "0"
 
     @on(Button.Pressed, "#ac")
-    def all_clear(self) -> None:
-        self.value = ""
-        self.num_displayed = "0"
-        self.result = 0
-        self.right = 0
+    def clear_all(self) -> None:
+        self.clear_typed()
         self.operator = operator.add
-
-    def compute_show_ac(self) -> None:
-        return self.value in ("", "0") and self.num_displayed == "0"
-
-    def watch_show_ac(self, show_ac) -> None:
-        self.query_one("#c").display = not show_ac
-        self.query_one("#ac").display = show_ac
+        self.last_typed = self.result = 0
 
 
 if __name__ == "__main__":
