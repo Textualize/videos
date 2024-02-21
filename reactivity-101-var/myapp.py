@@ -14,10 +14,6 @@ class Counter(Widget):
     def compose(self) -> ComposeResult:
         yield Button("+10")
 
-    def render(self):
-        self.app.query_one(Log).write_line("rendering")
-        return super().render()
-
     @on(Button.Pressed)
     def increment_counter(self) -> None:
         self.counter += 10
@@ -25,19 +21,27 @@ class Counter(Widget):
     def validate_counter(self, new_value) -> int:
         return min(new_value, 100)
 
+    def render(self):
+        self.app.query_one(Log).write_line("Rendering.")
+        return super().render()
 
-class ReactiveVarApp(App[None]):
+
+class DynamicWatchApp(App[None]):
     def compose(self) -> ComposeResult:
         yield Counter()
         yield ProgressBar(total=100, show_eta=False)
         yield Log()
 
-    def on_mount(self):
-        def update_progress(counter_value: int):
-            self.query_one(ProgressBar).update(progress=counter_value)
+    def on_mount(self) -> None:
+        def update_progress_bar(counter_value: int) -> None:
+            self.query_one(ProgressBar).progress = counter_value
 
-        self.watch(self.query_one(Counter), "counter", update_progress)
+        self.watch(
+            self.query_one(Counter),
+            "counter",
+            update_progress_bar,
+        )
 
 
 if __name__ == "__main__":
-    ReactiveVarApp().run()
+    DynamicWatchApp().run()

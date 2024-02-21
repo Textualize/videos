@@ -1,5 +1,3 @@
-# Written with Textual 0.52.1
-
 from textual import on
 from textual.app import App, ComposeResult
 from textual.color import Color, ColorParseError
@@ -15,7 +13,7 @@ class WatchApp(App[None]):
 
     def compose(self) -> ComposeResult:
         yield Input(placeholder="Enter a color")
-        with Grid(id="colors"):
+        with Grid():
             yield Static(id="old")
             yield Static(id="new")
 

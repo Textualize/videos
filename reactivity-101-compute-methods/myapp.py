@@ -24,15 +24,15 @@ class ComputedApp(App[None]):
         yield Static(id="color")
 
     def compute_color(self) -> Color:
-        return Color(self.red, self.green, self.blue).clamped
+        return Color(self.red, self.green, self.blue)
 
     def watch_color(self, color: Color) -> None:
-        self.query_one("#color").styles.background = color
+        self.query_one(Static).styles.background = color
 
     @on(Input.Changed)
     def update_color_component(self, event: Input.Changed) -> None:
         try:
-            component = int(event.value)
+            component = int(event.value or "0")
         except ValueError:
             self.bell()
         else:

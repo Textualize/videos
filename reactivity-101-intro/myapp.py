@@ -10,15 +10,13 @@ from textual.widgets import Input
 class Name(Widget):
     """Generates a greeting."""
 
-    def __init__(self):
-        self.who = "name"
-        super().__init__()
+    who = reactive("name")
 
     def render(self) -> str:
         return f"Hello, {self.who}!"
 
 
-class WatchApp(App[None]):
+class NameApp(App[None]):
     def compose(self) -> ComposeResult:
         yield Input(placeholder="Enter your name")
         yield Name()
@@ -29,4 +27,4 @@ class WatchApp(App[None]):
 
 
 if __name__ == "__main__":
-    WatchApp().run()
+    NameApp().run()

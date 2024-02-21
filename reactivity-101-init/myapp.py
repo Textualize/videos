@@ -8,13 +8,13 @@ from textual.reactive import var
 from textual.widgets import Input, Static
 
 
-class ReactiveInitApp(App[None]):
+class ComputedApp(App[None]):
     CSS_PATH = "myapp.tcss"
 
-    red = var(0)
-    green = var(0)
-    blue = var(0)
-    color = var(Color.parse("transparent"), init=False)
+    red = var(255)
+    green = var(255)
+    blue = var(255)
+    color = var(Color.parse("transparent"))
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="color-inputs"):
@@ -24,15 +24,15 @@ class ReactiveInitApp(App[None]):
         yield Static(id="color")
 
     def compute_color(self) -> Color:
-        return Color(self.red, self.green, self.blue).clamped
+        return Color(self.red, self.green, self.blue)
 
     def watch_color(self, color: Color) -> None:
-        self.query_one("#color").styles.background = color
+        self.query_one(Static).styles.background = color
 
     @on(Input.Changed)
     def update_color_component(self, event: Input.Changed) -> None:
         try:
-            component = int(event.value)
+            component = int(event.value or "0")
         except ValueError:
             self.bell()
         else:
@@ -45,5 +45,5 @@ class ReactiveInitApp(App[None]):
 
 
 if __name__ == "__main__":
-    app = ReactiveInitApp()
+    app = ComputedApp()
     app.run()

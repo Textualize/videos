@@ -15,11 +15,11 @@ class Name(Widget):
     def render(self) -> str:
         return f"Hello, {self.who}!"
 
-    def validate_who(self, who: str) -> str:
-        return who.capitalize()
+    def validate_who(self, new_who: str) -> str:
+        return new_who.capitalize()
 
 
-class WatchApp(App[None]):
+class NameApp(App[None]):
     def compose(self) -> ComposeResult:
         yield Input(placeholder="Enter your name")
         yield Name()
@@ -30,4 +30,4 @@ class WatchApp(App[None]):
 
 
 if __name__ == "__main__":
-    WatchApp().run()
+    NameApp().run()

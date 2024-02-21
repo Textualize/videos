@@ -27,11 +27,15 @@ class DynamicWatchApp(App[None]):
         yield Counter()
         yield ProgressBar(total=100, show_eta=False)
 
-    def on_mount(self):
-        def update_progress(counter_value: int):
-            self.query_one(ProgressBar).update(progress=counter_value)
+    def on_mount(self) -> None:
+        def update_progress_bar(counter_value: int) -> None:
+            self.query_one(ProgressBar).progress = counter_value
 
-        self.watch(self.query_one(Counter), "counter", update_progress)
+        self.watch(
+            self.query_one(Counter),
+            "counter",
+            update_progress_bar,
+        )
 
 
 if __name__ == "__main__":

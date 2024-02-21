@@ -3,7 +3,7 @@ Input {
     margin-top: 1;
 }
 
-#colors {
+Grid {
     grid-size: 2 1;
     grid-gutter: 2 4;
     grid-columns: 1fr;
