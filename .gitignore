@@ -2,3 +2,4 @@
 .venv
 /myapp.py
 /myapp.tcss
+__pycache__

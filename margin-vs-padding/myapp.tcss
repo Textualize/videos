@@ -1,0 +1,14 @@
+Screen {
+    background: brown;
+}
+
+Screen > Container {
+    background: blue;
+    margin: 2;
+    padding: 2;
+}
+
+Screen > Container > Label {
+    background: red;
+    margin: 1;
+}

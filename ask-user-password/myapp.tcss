@@ -1,0 +1,10 @@
+Screen {
+    align: center middle;
+
+    & > Container {
+        padding: 2 4;
+        width: 70%;
+        height: auto;
+        background: $panel;
+    }
+}
